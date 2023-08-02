@@ -8,4 +8,11 @@ export class UserService {
   async getAll() {
     return await this.userRepository.find();
   }
+
+  async getProfile(id: string) {
+    return await this.userRepository.findOne({
+      where: { id },
+      select: ['email', 'avatar', 'firstName', 'lastName'],
+    });
+  }
 }
